@@ -49,4 +49,16 @@ public class ParameterizedTests {
     public void csvSource_StringWithDelimiter(String param1, String param2) {
         System.out.println("param1 = " + param1 + ", param2 = " + param2);
     }
+
+    @ParameterizedTest
+    @CsvFileSource(files = {"src/main/resources/parameters/shopping.csv", "src/main/resources/parameters/shopping2.csv"}, numLinesToSkip = 1)
+    public void csvFileSource_String_Double_Int_String_String(String name, double price, int quantity, String unit, String provider) {
+        System.out.println("name " + name + " price " + price + " quantity " + quantity + " unit " + unit + " provider " + provider);
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(files = {"src/main/resources/parameters/shopping3.csv"}, numLinesToSkip = 1, delimiterString = "_")
+    public void csvFileSource_String_Double_Int_String_String2(String name, double price, int quantity, String unit, String provider) {
+        System.out.println("name " + name + " price " + price + " quantity " + quantity + " unit " + unit + " provider " + provider);
+    }
 }
